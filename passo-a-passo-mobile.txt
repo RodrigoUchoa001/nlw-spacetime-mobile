@@ -1,0 +1,26 @@
+comando pra iniciar um projeto react native
+npx create-expo-app mobile
+"mobile" é o nome do app
+
+trocar o nome do arquivo "App.js" pra "App.tsx"
+depois de fazer essa troca, roda com "npm run start"
+ai ele vai configurar tudo pra ts
+depois disso, no terminal vai aparecer o QRCODE pra escanear com o app EXPO GO no cell
+
+instalar o tailwind
+npm i nativewind
+npm i tailwindcss -D
+
+criar arquivo tailwind.config.js
+npx tailwindcss init
+fazer as modificacoes q dizem aqui: https://www.nativewind.dev/quick-starts/expo pro "tailwind.config.js"  e  "babel.config.js"
+
+colocar assim dentro do tsconfig.json
+{
+  "compilerOptions": {
+    "types": [
+      "nativewind/types"
+    ]
+  },
+  "extends": "expo/tsconfig.base"
+}
