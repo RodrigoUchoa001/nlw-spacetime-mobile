@@ -24,3 +24,8 @@ colocar assim dentro do tsconfig.json
   },
   "extends": "expo/tsconfig.base"
 }
+
+----------------- A PARTIR DAQUI AULA 2 -----------------
+
+pra instalar as fontes:
+npx expo install @expo-google-fonts/roboto @expo-google-fonts/bai-jamjuree expo-font 
