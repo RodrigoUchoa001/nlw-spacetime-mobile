@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, View, Text } from 'react-native';
+import { ImageBackground, View, Text, TouchableOpacity } from 'react-native';
 
 import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree';
@@ -47,6 +47,14 @@ export default function App() {
             Colecione momentos marcantes da sua jornada e compartilhe (se quiser) com o mundo!
           </Text>
         </View>
+
+        <TouchableOpacity
+          activeOpacity={0.7}
+          className='rounded-full bg-green-500 px-5 py-2'
+        >
+          <Text className='font-alt text-sm uppercase text-black'>Cadastrar Lembrança</Text>
+
+        </TouchableOpacity>
 
       </View>
 
