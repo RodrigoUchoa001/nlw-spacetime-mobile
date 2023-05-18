@@ -29,3 +29,16 @@ colocar assim dentro do tsconfig.json
 
 pra instalar as fontes:
 npx expo install @expo-google-fonts/roboto @expo-google-fonts/bai-jamjuree expo-font 
+
+pra usar png:
+criar um arquivo em src/assets/assets.d.ts 
+q vai conter:
+declare module '*.png';
+com isso o typescript vai entender q todo arquivo png é um arquivo q posso importar
+
+pra poder usar svg:
+npx expo install react-native-svg
+npm i -D react-native-svg-transformer
+e depois criar o arquivo "metro.config.js" com o código q tem lá
+e então colocar o "declare module '*.svg'" q tá lá no "assets.d.ts"
+
