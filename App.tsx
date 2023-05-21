@@ -8,10 +8,19 @@ import blurBg from './src/assets/bg-blur.png';
 import Stripes from './src/assets/stripes.svg';
 import NLWLogo from './src/assets/slw-spacetime-logo.svg';
 import { styled } from 'nativewind';
+import { useAuthRequest, makeRedirectUri } from 'expo-auth-session';
+import { useEffect } from 'react';
+import { api } from './src/lib/api';
 
 // o nativewind só consegue estilizar componentes do proprio react native
 // com isso consigo estilizar o svg
 const StyledStripes = styled(Stripes);
+
+const discovery = {
+  authorizationEndpoint: 'https://github.com/login/oauth/authorize',
+  tokenEndpoint: 'https://github.com/login/oauth/access_token',
+  revocationEndpoint: 'https://github.com/settings/connections/applications/824bf518d887965f19bb',
+};
 
 export default function App() {
   const [ hasLoadedFonts ] = useFonts({
@@ -19,6 +28,35 @@ export default function App() {
     Roboto_700Bold,
     BaiJamjuree_700Bold
   });
+
+  const [request, response, signInWithGithub] = useAuthRequest(
+    {
+      clientId: '824bf518d887965f19bb',
+      scopes: ['identity'],
+      redirectUri: makeRedirectUri({
+        scheme: 'nlwspacetime',
+      }),
+    },
+    discovery,
+  );
+
+  useEffect(() => {
+    // console.log(makeRedirectUri({
+    //   scheme: 'nlwspacetime',
+    // }));
+
+    if (response?.type === 'success') {
+      const { code } = response.params;
+
+      api.post('/register', {
+        code,
+      }).then(res => {
+        const { token } = res.data;
+
+        console.log(token);
+      })
+    }
+  }, [response]);
 
   // se as fontes ainda n carregaram, n mostra nada, 
   // só mostra as coisas depois delas terem carregado
@@ -51,6 +89,7 @@ export default function App() {
         <TouchableOpacity
           activeOpacity={0.7}
           className='rounded-full bg-green-500 px-5 py-2'
+          onPress={() => signInWithGithub()}
         >
           <Text className='font-alt text-sm uppercase text-black'>Cadastrar Lembrança</Text>
 

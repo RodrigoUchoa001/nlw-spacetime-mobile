@@ -42,3 +42,6 @@ npm i -D react-native-svg-transformer
 e depois criar o arquivo "metro.config.js" com o código q tem lá
 e então colocar o "declare module '*.svg'" q tá lá no "assets.d.ts"
 
+----------------- A PARTIR DAQUI AULA 3 -----------------
+pra instalar os pacotes de autenticação
+npx expo install expo-auth-session expo-crypto
