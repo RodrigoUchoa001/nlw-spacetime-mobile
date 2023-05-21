@@ -45,3 +45,6 @@ e então colocar o "declare module '*.svg'" q tá lá no "assets.d.ts"
 ----------------- A PARTIR DAQUI AULA 3 -----------------
 pra instalar os pacotes de autenticação
 npx expo install expo-auth-session expo-crypto
+
+pacote pra salvar dados no storage do cell, bom pra infos mais sensiveis
+npx expo install expo-secure-store

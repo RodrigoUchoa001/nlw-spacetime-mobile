@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, View, Text, TouchableOpacity } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
 
 import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree';
@@ -53,7 +54,9 @@ export default function App() {
       }).then(res => {
         const { token } = res.data;
 
-        console.log(token);
+        SecureStore.setItemAsync('token', token); //salvando o token com nome "token"
+      }).catch(err => {
+        console.error(err);
       })
     }
   }, [response]);
