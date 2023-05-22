@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity, Switch } from "react-native";
+import { Text, View, TouchableOpacity, Switch, TextInput } from "react-native";
 import NLWLogo from '../src/assets/slw-spacetime-logo.svg';
 import { Link } from "expo-router";
 import Icon from '@expo/vector-icons/Feather';
@@ -47,6 +47,15 @@ export default function NewMemory(){
                         </Text>
                     </View>
                 </TouchableOpacity>
+
+                <TextInput 
+                    multiline
+                    className="p-0 font-body text-lg text-gray-50"
+                    placeholder="Fique livre para adicionar fotos, vídeos e relatos sobre essa experiência que você quer lembrar para sempre."
+                    placeholderTextColor='#56565a'
+                >
+
+                </TextInput>
             </View>
         </View>
     )
