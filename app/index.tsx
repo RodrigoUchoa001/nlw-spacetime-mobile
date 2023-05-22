@@ -76,11 +76,11 @@ export default function App() {
             </View>
 
             <TouchableOpacity
-            activeOpacity={0.7}
-            className='rounded-full bg-green-500 px-5 py-2'
-            onPress={() => signInWithGithub()}
+                activeOpacity={0.7}
+                className='rounded-full bg-green-500 px-5 py-2'
+                onPress={() => signInWithGithub()}
             >
-            <Text className='font-alt text-sm uppercase text-black'>Cadastrar Lembrança</Text>
+                <Text className='font-alt text-sm uppercase text-black'>Cadastrar Lembrança</Text>
 
             </TouchableOpacity>
         </View>

@@ -53,9 +53,15 @@ export default function NewMemory(){
                     className="p-0 font-body text-lg text-gray-50"
                     placeholder="Fique livre para adicionar fotos, vídeos e relatos sobre essa experiência que você quer lembrar para sempre."
                     placeholderTextColor='#56565a'
-                >
+                />
 
-                </TextInput>
+                <TouchableOpacity
+                    activeOpacity={0.7}
+                    className='rounded-full items-center bg-green-500 px-5 py-2'
+                >
+                    <Text className='font-alt text-sm uppercase text-black'>Salvar</Text>
+
+                </TouchableOpacity>
             </View>
         </View>
     )
