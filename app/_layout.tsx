@@ -11,8 +11,19 @@ import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/
 import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree';
 import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import * as SecureStore from 'expo-secure-store';
+import { useEffect, useState } from 'react';
 
 export default function Layout(){
+    const [ isUserAuthenticated, setIUserAuthenticated ] = useState< null | boolean >(null);
+
+    useEffect(() => {
+        SecureStore.getItemAsync('token').then(token => {
+            console.log(!!token);
+            setIUserAuthenticated(!!token); //o '!!' converte pra boolean. Se o token existir, converte pra true; se ñ converte pra false
+        });
+    }, []); //quando n passo nada dentro do array, o useEffect é executado uma vez só
+
     const [ hasLoadedFonts ] = useFonts({
         Roboto_400Regular, 
         Roboto_700Bold,
@@ -41,7 +52,10 @@ export default function Layout(){
                         backgroundColor: 'transparent',
                     }
                 }
-            } />
+            }>
+                <Stack.Screen name='index' redirect={isUserAuthenticated}/> {/* o nome das rotas tem q ser o msm dos arquivos na pasta app */}
+                <Stack.Screen name='memories'/> {/* o redirect acima faz com q pule pra próxima tela (essa de memories) caso o for passado lá dentro seja true */}
+            </Stack>
 
         </ImageBackground>
 
