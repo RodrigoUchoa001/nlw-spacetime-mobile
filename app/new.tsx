@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity, Switch, TextInput } from "react-native";
+import { Text, View, TouchableOpacity, Switch, TextInput, ScrollView } from "react-native";
 import NLWLogo from '../src/assets/slw-spacetime-logo.svg';
 import { Link } from "expo-router";
 import Icon from '@expo/vector-icons/Feather';
@@ -11,7 +11,7 @@ export default function NewMemory(){
     const [ isPublic, setIsPublic ] = useState(false);
 
     return (
-        <View className="flex-1 px-8" style={{ paddingBottom: bottom, paddingTop: top }}>
+        <ScrollView className="flex-1 px-8" contentContainerStyle={{ paddingBottom: bottom, paddingTop: top }}>
             <View className="flex-row mt-4 items-center justify-between">
                 <NLWLogo />
 
@@ -63,6 +63,6 @@ export default function NewMemory(){
 
                 </TouchableOpacity>
             </View>
-        </View>
+        </ScrollView>
     )
 }
