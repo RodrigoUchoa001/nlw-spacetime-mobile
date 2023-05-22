@@ -34,7 +34,14 @@ export default function Layout(){
             <StyledStripes className='absolute left-2'/>
             <StatusBar style="light" />
 
-            
+            <Stack screenOptions={
+                { 
+                    headerShown: false, // pra n aparecer a tab no topo
+                    contentStyle: {
+                        backgroundColor: 'transparent',
+                    }
+                }
+            } />
 
         </ImageBackground>
 
