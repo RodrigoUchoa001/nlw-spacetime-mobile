@@ -57,7 +57,7 @@ export default function NewMemory(){
 
                 <TouchableOpacity
                     activeOpacity={0.7}
-                    className='rounded-full items-center bg-green-500 px-5 py-2'
+                    className='rounded-full items-center self-end bg-green-500 px-5 py-2' // o "self-end" cola o botao no lado direito da tela
                 >
                     <Text className='font-alt text-sm uppercase text-black'>Salvar</Text>
 
