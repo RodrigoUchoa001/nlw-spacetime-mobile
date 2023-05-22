@@ -54,6 +54,7 @@ export default function Layout(){
                 }
             }>
                 <Stack.Screen name='index' redirect={isUserAuthenticated}/> {/* o nome das rotas tem q ser o msm dos arquivos na pasta app */}
+                <Stack.Screen name='new'/> 
                 <Stack.Screen name='memories'/> {/* o redirect acima faz com q pule pra próxima tela (essa de memories) caso o for passado lá dentro seja true */}
             </Stack>
 
