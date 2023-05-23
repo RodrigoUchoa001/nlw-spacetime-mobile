@@ -53,3 +53,6 @@ npx expo install expo-secure-store
 ----------------- A PARTIR DAQUI AULA 5 -----------------
 pacote de pegar imagem da galeria
 npx expo install expo-image-picker
+
+pacote pra mexer com data
+npm i dayjs
