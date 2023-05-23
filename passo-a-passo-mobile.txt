@@ -48,3 +48,8 @@ npx expo install expo-auth-session expo-crypto
 
 pacote pra salvar dados no storage do cell, bom pra infos mais sensiveis
 npx expo install expo-secure-store
+
+
+----------------- A PARTIR DAQUI AULA 5 -----------------
+pacote de pegar imagem da galeria
+npx expo install expo-image-picker
