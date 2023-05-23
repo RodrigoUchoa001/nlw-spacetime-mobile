@@ -1,6 +1,6 @@
 import { Text, View, TouchableOpacity, Switch, TextInput, ScrollView, Image } from "react-native";
 import NLWLogo from '../src/assets/slw-spacetime-logo.svg';
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import Icon from '@expo/vector-icons/Feather';
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useState } from "react";
@@ -10,6 +10,7 @@ import { api } from "../src/lib/api";
 
 export default function NewMemory(){
     const { bottom, top } = useSafeAreaInsets(); //pra colocar safearea na primeira view
+    const router = useRouter();
 
     const [ isPublic, setIsPublic ] = useState(false);
     const [ content, setContent ] = useState('');
@@ -51,9 +52,18 @@ export default function NewMemory(){
             });
 
             coverUrl = uploadResponse.data.fileUrl;
-
-            console.log(coverUrl);
         }
+        await api.post('/memories', {
+            content,
+            isPublic, 
+            coverUrl,
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
+        router.push('/memories');
     }
 
     return (
