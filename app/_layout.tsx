@@ -50,12 +50,13 @@ export default function Layout(){
                     headerShown: false, // pra n aparecer a tab no topo
                     contentStyle: {
                         backgroundColor: 'transparent',
-                    }
+                    },
+                    animation: 'fade', //animação ao trocar de tela
                 }
             }>
                 <Stack.Screen name='index' redirect={isUserAuthenticated}/> {/* o nome das rotas tem q ser o msm dos arquivos na pasta app */}
-                <Stack.Screen name='new'/> 
                 <Stack.Screen name='memories'/> {/* o redirect acima faz com q pule pra próxima tela (essa de memories) caso o for passado lá dentro seja true */}
+                <Stack.Screen name='new'/> 
             </Stack>
 
         </ImageBackground>
