@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity, Switch, TextInput, ScrollView } from "react-native";
+import { Text, View, TouchableOpacity, Switch, TextInput, ScrollView, Image } from "react-native";
 import NLWLogo from '../src/assets/slw-spacetime-logo.svg';
 import { Link } from "expo-router";
 import Icon from '@expo/vector-icons/Feather';
@@ -11,18 +11,21 @@ export default function NewMemory(){
 
     const [ isPublic, setIsPublic ] = useState(false);
     const [ content, setContent ] = useState('');
+    const [ preview, setPreview ] = useState<string | null>(null);
 
     async function openImagePicker() {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images, //pegar apenas imagem, n video
-            quality: 1,
-          });
-      
-          console.log(result);
-      
-        //   if (!result.canceled) {
-        //     setImage(result.assets[0].uri);
-        //   }
+        try {
+            let result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images, //pegar apenas imagem, n video
+                quality: 1,
+            });
+
+            if (result.assets[0]) {
+                setPreview(result.assets[0].uri);
+            }
+        } catch (err){
+            //
+        }
     }
 
     function handleCreateMemory() {
@@ -60,12 +63,16 @@ export default function NewMemory(){
                     onPress={openImagePicker}
                     className="h-32 justify-center items-center rounded-lg border border-dashed border-gray-500 bg-black/20"
                 >
-                    <View className="flex-row items-center gap-2">
+                    { preview ? (
+                        <Image source={{ uri: preview }} className="h-full w-full rounded-lg object-cover"/>
+                    ) : (
+                        <View className="flex-row items-center gap-2">
                         <Icon name="image" color='#FFF'/>
                         <Text className="font-body text-sm text-gray-200">
                             Adicionar foto ou vídeo de capa
                         </Text>
                     </View>
+                    ) }
                 </TouchableOpacity>
 
                 <TextInput 
